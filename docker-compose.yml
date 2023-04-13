@@ -23,6 +23,10 @@ services:
       - 8008:80
     depends_on:
       - nextcloud-db
+    environment:
+      OVERWRITEPROTOCOL: https
+      OVERWRITECLIURL: https://nextcloud.euredomain.de
+      OVERWRITEHOST: nextcloud.euredomain.de
     volumes:
       - /media/hdd/nextcloud_data/app/web:/var/www/html
       - /media/hdd/nextcloud_data/app/data:/var/www/html/data 
