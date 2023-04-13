@@ -6,10 +6,10 @@ services:
     container_name: nextcloud-db
     restart: unless-stopped
     environment:
-      - MYSQL_ROOT_PASSWORD=rootpassword #SQL root Passwort eingeben
-      - MYSQL_PASSWORD=userpassword #SQL Benutzer Passwort eingeben
-      - MYSQL_DATABASE=nextcloud #Datenbank Name
-      - MYSQL_USER=nextcloud #SQL Nutzername
+      - MYSQL_ROOT_PASSWORD=${DBROOTPW} #SQL root Passwort eingeben
+      - MYSQL_PASSWORD=${DBPW} #SQL Benutzer Passwort eingeben
+      - MYSQL_DATABASE=${DBNAME} #Datenbank Name
+      - MYSQL_USER=${DBUSER} #SQL Nutzername
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
@@ -25,8 +25,8 @@ services:
       - nextcloud-db
     environment:
       OVERWRITEPROTOCOL: https
-      OVERWRITECLIURL: https://nextcloud.euredomain.de
-      OVERWRITEHOST: nextcloud.euredomain.de
+      OVERWRITECLIURL: "${URL}"
+      OVERWRITEHOST: "${DOMAIN}"
     volumes:
       - /media/hdd/nextcloud_data/app/web:/var/www/html
       - /media/hdd/nextcloud_data/app/data:/var/www/html/data 
