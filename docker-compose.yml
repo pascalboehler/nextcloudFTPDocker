@@ -1,0 +1,25 @@
+version: "3.3"
+
+services:
+  nextcloud-db:
+    image: mariadb
+    container_name: nextcloud-db
+    restart: unless-stopped
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /media/hdd/nextcloud_data/database:/var/lib/mysql
+
+  nextcloud-app:
+    image: nextcloud
+    container_name: nextcloud-app
+    restart: unless-stopped
+    ports:
+      - 8008:80
+    depends_on:
+      - nextcloud-db
+    volumes:
+      - /media/hdd/nextcloud_data/app/web:/var/www/html
+      - /media/hdd/nextcloud_data/app/data:/var/www/html/data 
+
+
