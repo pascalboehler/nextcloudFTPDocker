@@ -5,6 +5,11 @@ services:
     image: mariadb
     container_name: nextcloud-db
     restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword #SQL root Passwort eingeben
+      - MYSQL_PASSWORD=userpassword #SQL Benutzer Passwort eingeben
+      - MYSQL_DATABASE=nextcloud #Datenbank Name
+      - MYSQL_USER=nextcloud #SQL Nutzername
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
