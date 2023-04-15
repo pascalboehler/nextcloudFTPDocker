@@ -1,9 +1,8 @@
 # Update the system using apt (ubuntu server)
 
-sudo apt update
-sudo apt upgrade --yes
+sudo pacman -Syu --noconfirm
 
-sudo apt install git vim --yes
+sudo pacman -S git vim --noconfirm
 
 # Check if the drive exists
 
@@ -39,21 +38,17 @@ fi
 
 # Install docker via its script and nginx via apt
 
-curl https://get.docker.com | sh
+sudo pacman -S docker --noconfirm
 
-sudo usermod -aG docker azureuser
+sudo usermod -aG docker $USER
 
 # Install nginx
 
-sudo apt install nginx --yes
-
-# create ufw rule to allow outbount traffic (just in case its needed)
-
-sudo ufw allow 'Nginx Full'
+sudo pacman -S nginx --noconfirm
 
 # install certbot
 
-sudo apt install certbot python3-certbot-nginx --yes
+sudo pacman -S certbot python3-certbot-nginx --noconfirm
 
 # create the nginx files for our domains:
 
