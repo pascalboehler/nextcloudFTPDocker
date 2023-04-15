@@ -10,8 +10,8 @@ sudo apt install git vim --yes
 DRIVE=/dev/sdc 
 PARTITION=/dev/sdc1
 MOUNTPOINT=/media/hdd
-FTPDOMAIN=ftp.gsworldtraveller.com
-CLOUDDOMAIN=cloud.gsworldtraveller.com
+FTPDOMAIN=ftp.example.com
+CLOUDDOMAIN=cloud.example.com
 
 if findfs "$DRIVE"; then
 	echo "$DRIVE IS VALID"
